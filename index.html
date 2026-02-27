@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fy labs</title>
+    <meta name="description" content="Good things, made for you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            background: #0a0a0e;
+            color: #e8e8ec;
+        }
+
+        /* Quiet ambient light */
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .bg .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(150px);
+            animation: drift 30s ease-in-out infinite alternate;
+        }
+
+        .bg .orb:nth-child(1) {
+            width: 60vmax;
+            height: 60vmax;
+            background: radial-gradient(circle, rgba(90, 80, 140, 0.18) 0%, transparent 70%);
+            top: -25%;
+            left: -15%;
+            animation-duration: 35s;
+        }
+
+        .bg .orb:nth-child(2) {
+            width: 50vmax;
+            height: 50vmax;
+            background: radial-gradient(circle, rgba(60, 100, 130, 0.12) 0%, transparent 70%);
+            bottom: -25%;
+            right: -15%;
+            animation-duration: 40s;
+            animation-delay: -8s;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(3vw, -2vh);
+            }
+        }
+
+        /* Grain */
+        .grain {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.025;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 720px;
+        }
+
+        .hero {
+            font-size: clamp(2.8rem, 8vw, 6rem);
+            font-weight: 100;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.8rem;
+            animation: fadeUp 1.4s ease-out 0.3s both;
+        }
+
+        .hero .fy {
+            font-weight: 300;
+            background: linear-gradient(135deg,
+                    #b8a0e8 0%,
+                    #82c8e8 50%,
+                    #a0d8c8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.28);
+            line-height: 1.8;
+            animation: fadeUp 1.4s ease-out 0.7s both;
+        }
+
+        .line {
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 2.8rem auto;
+            animation: fadeUp 1.4s ease-out 1.0s both;
+        }
+
+        .brand {
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.12);
+            animation: fadeUp 1.4s ease-out 1.2s both;
+        }
+
+        .brand .expand {
+            font-weight: 200;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.08);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <div class="grain"></div>
+
+    <main class="content">
+        <h1 class="hero">We make things —<br><span class="fy">for you</span>.</h1>
+        <p class="subtitle">Something is always brewing. Stay curious.</p>
+        <span class="line"></span>
+        <p class="brand">fy labs <span class="expand">— for you</span></p>
+    </main>
+</body>
+
+</html>
